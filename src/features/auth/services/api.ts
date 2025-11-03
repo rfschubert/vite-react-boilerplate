@@ -8,7 +8,7 @@ const api = axios.create({
     },
 })
 
-// Interceptor para adicionar token em todas as requisições
+// Interceptor to add token to all requests
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('access_token')
 
@@ -19,13 +19,13 @@ api.interceptors.request.use((config) => {
     return config
 })
 
-// Interceptor para tratar erros e renovar token
+// Interceptor to handle errors and refresh token
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config
 
-        // Se receber 401 e não for a rota de login
+        // If receiving 401 and not the login route
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true
 
@@ -33,7 +33,7 @@ api.interceptors.response.use(
                 const refreshToken = localStorage.getItem('refresh_token')
 
                 if (refreshToken) {
-                    // Tenta renovar o token
+                    // Try to refresh the token
                     const response = await axios.post(
                         `${import.meta.env.VITE_API_URL}/api/auth/refresh`,
                         { refresh_token: refreshToken }
@@ -42,12 +42,12 @@ api.interceptors.response.use(
                     const { access_token } = response.data
                     localStorage.setItem('access_token', access_token)
 
-                    // Refaz a requisição original com o novo token
+                    // Retry the original request with the new token
                     originalRequest.headers.Authorization = `Bearer ${access_token}`
                     return api(originalRequest)
                 }
             } catch (refreshError) {
-                // Se falhar ao renovar, desloga o usuário
+                // If refresh fails, logout the user
                 localStorage.removeItem('access_token')
                 localStorage.removeItem('refresh_token')
                 localStorage.removeItem('auth-storage')

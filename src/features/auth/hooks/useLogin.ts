@@ -18,7 +18,7 @@ export const useLogin = () => {
 
             const response = await authService.login(credentials)
 
-            // Salva os dados no store
+            // Save data to store
             login(
                 response.user,
                 response.access_token,
@@ -27,7 +27,7 @@ export const useLogin = () => {
                 response.expires_in
             )
 
-            // Redireciona para o dashboard
+            // Redirect to dashboard
             navigate('/dashboard')
 
             return { success: true, data: response }

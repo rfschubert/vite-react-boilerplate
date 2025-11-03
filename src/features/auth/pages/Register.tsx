@@ -29,13 +29,13 @@ const Register = () => {
         setLoading(true)
 
         try {
-            // Validação simples
+            // Simple validation
             if (formData.password !== formData.passwordConfirmation) {
                 alert('As senhas não coincidem')
                 return
             }
 
-            // Simulação de registro (substituir por chamada real à API)
+            // Registration simulation (replace with real API call)
             await new Promise((resolve) => setTimeout(resolve, 1000))
 
             navigate('/login')

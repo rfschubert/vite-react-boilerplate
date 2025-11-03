@@ -2,13 +2,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import AppRoutes from './routes/AppRoutes'
 
-// Configuração do React Query
+// React Query configuration
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // Não refaz query ao focar janela
-      retry: 1, // Tenta 1 vez em caso de erro
-      staleTime: 5 * 60 * 1000, // 5 minutos
+      refetchOnWindowFocus: false, // Don't refetch query on window focus
+      retry: 1, // Retry once on error
+      staleTime: 5 * 60 * 1000, // 5 minutes
     },
   },
 })

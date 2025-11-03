@@ -29,7 +29,7 @@ interface User {
 const Users = () => {
     const [searchTerm, setSearchTerm] = useState('')
 
-    // Dados mockados
+    // Mock data
     const users: User[] = [
         {
             id: '1',

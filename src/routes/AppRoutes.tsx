@@ -1,14 +1,14 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import MainLayout from '@/components/layout/MainLayout'
 
-// Páginas
+// Pages
 import Login from '@/features/auth/pages/Login'
 import Register from '@/features/auth/pages/Register'
 import Dashboard from '@/features/dashboard/pages/Dashboard'
 import Users from '@/features/users/pages/Users'
 import NotFound from '@/features/errors/pages/NotFound'
 
-// Hook customizado para verificar autenticação
+// Custom hook to check authentication
 import { useAuthStore } from '@/features/auth/store/authStore'
 
 const AppRoutes = () => {
@@ -16,11 +16,11 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-            {/* Rotas públicas */}
+            {/* Public routes */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            {/* Rotas protegidas */}
+            {/* Protected routes */}
             <Route
                 path="/"
                 element={
@@ -32,7 +32,7 @@ const AppRoutes = () => {
                 <Route path="users" element={<Users />} />
             </Route>
 
-            {/* Rota 404 */}
+            {/* 404 route */}
             <Route path="*" element={<NotFound />} />
         </Routes>
     )

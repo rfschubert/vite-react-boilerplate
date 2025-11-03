@@ -13,7 +13,7 @@ export const authService = {
         } catch (error) {
             console.error('Erro ao fazer logout:', error)
         } finally {
-            // Limpa os tokens mesmo se o logout falhar
+            // Clear tokens even if logout fails
             localStorage.removeItem('access_token')
             localStorage.removeItem('refresh_token')
             localStorage.removeItem('auth-storage')

@@ -13,7 +13,7 @@ export default function Layout() {
             </header>
 
             <main style={{ padding: '20px' }}>
-                <Outlet /> {/* Aqui renderizam as páginas */}
+                <Outlet /> {/* Pages render here */}
             </main>
 
             <footer style={{ padding: '20px', background: '#f0f0f0', marginTop: '40px' }}>

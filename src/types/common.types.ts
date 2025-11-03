@@ -1,4 +1,4 @@
-// Resposta padrão da API
+// Default API response
 export interface ApiResponse<T> {
     data: T
     message: string
@@ -6,14 +6,14 @@ export interface ApiResponse<T> {
     success: boolean
 }
 
-// Erro padrão da API
+// Default API error
 export interface ApiError {
     message: string
     code: string
     details?: Record<string, string[]>
 }
 
-// Paginação
+// Pagination
 export interface PaginationParams {
     page: number
     limit: number
